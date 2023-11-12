@@ -14,7 +14,21 @@ const submit_faces = document.getElementById('submit-faces-btn')
 let box_list = []
 let female_face_id_list = []
 
-img.src = "trio.webp"
+img.src = "multiple.webp"
+
+function logJsonArray(objects) {
+    // let string = ''
+    // objects.forEach((obj, index) => {
+    //   console.log(`Object ${index + 1}:`);
+    //   string += JSON.stringify(obj, null, 2) + '\n'
+    //   console.log(JSON.stringify(obj, null, 2)); // The third argument (2) is for indentation
+    //   console.log('\n');
+    // });
+
+    // console.log(string)
+    const jsonArrayString = JSON.stringify(objects, null, 2);
+    console.log(jsonArrayString);
+}
 
 function uuidv4() { 
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
@@ -155,5 +169,6 @@ img.onload = () => {
 
     submit_faces.onclick = (event) => {
         alert(box_list)
+        logJsonArray(box_list)
     }
 }
