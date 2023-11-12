@@ -28,6 +28,8 @@
 	<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
 	<!--end::Global Stylesheets Bundle-->
 	<script>// Frame-busting to prevent site from being loaded within a frame without permission (click-jacking) if (window.top != window.self) { window.top.location.replace(window.self.location.href); }</script>
+
+    <link rel="stylesheet" href="face.css">
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -37,7 +39,9 @@
 	data-kt-app-sidebar-push-header="true" data-kt-app-sidebar-push-toolbar="true"
 	data-kt-app-sidebar-push-footer="true" data-kt-app-toolbar-enabled="true" class="app-default">
 	<!--begin::Theme mode setup on page load-->
-	<script>var defaultThemeMode = "light"; var themeMode; if (document.documentElement) { if (document.documentElement.hasAttribute("data-bs-theme-mode")) { themeMode = document.documentElement.getAttribute("data-bs-theme-mode"); } else { if (localStorage.getItem("data-bs-theme") !== null) { themeMode = localStorage.getItem("data-bs-theme"); } else { themeMode = defaultThemeMode; } } if (themeMode === "system") { themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } document.documentElement.setAttribute("data-bs-theme", themeMode); }</script>
+	<script>
+        var defaultThemeMode = "light"; var themeMode; if (document.documentElement) { if (document.documentElement.hasAttribute("data-bs-theme-mode")) { themeMode = document.documentElement.getAttribute("data-bs-theme-mode"); } else { if (localStorage.getItem("data-bs-theme") !== null) { themeMode = localStorage.getItem("data-bs-theme"); } else { themeMode = defaultThemeMode; } } if (themeMode === "system") { themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } document.documentElement.setAttribute("data-bs-theme", themeMode); }
+    </script>
 	<!--end::Theme mode setup on page load-->
 	<!--begin::App-->
 	<div class="d-flex flex-column flex-root app-root" id="kt_app_root">
@@ -466,7 +470,7 @@
 									<!--begin:Menu item-->
 									<div class="menu-item">
 										<!--begin:Menu link-->
-										<a class="menu-link" href="face.html">
+										<a class="menu-link" href="#">
 											<span class="menu-icon">
 												<i class="fa-regular fa-face-laugh"></i>
 											</span>
@@ -533,7 +537,7 @@
 									<!--begin::Title-->
 									<h1
 										class="page-heading d-flex text-gray-900 fw-bold fs-3 flex-column justify-content-center my-0">
-										Annotation percentages</h1>
+										Face Annotation</h1>
 									<!--end::Title-->
 									<!--begin::Breadcrumb-->
 									<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
@@ -548,7 +552,7 @@
 										</li>
 										<!--end::Item-->
 										<!--begin::Item-->
-										<li class="breadcrumb-item text-muted">Annotation Details</li>
+										<li class="breadcrumb-item text-muted">Annotate Faces</li>
 										<!--end::Item-->
 									</ul>
 									<!--end::Breadcrumb-->
@@ -559,221 +563,45 @@
 						</div>
 						<!--end::Toolbar-->
 						<!--begin::Content-->
-						<div id="kt_app_content" class="app-content flex-column-fluid">
-							<!--begin::Content container-->
-							<div id="kt_app_content_container" class="app-container container-fluid">
-								<!--begin::Row-->
-								<div class="row g-5 gx-xl-10 mb-5 mb-xl-10">
-									<!--begin::Col-->
-									<div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-md-5 mb-xl-10">
-										<!--begin::Card widget 20-->
-										<div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-end h-md-50 mb-5 mb-xl-10"
-											style="background-color: #f14141;background-image:url('assets/media/patterns/vector-1.png')">
-											<!--begin::Header-->
-											<div class="card-header pt-5">
-												<!--begin::Title-->
-												<div class="card-title d-flex flex-column">
-													<!--begin::Amount-->
-													<span class="fs-2hx fw-bold text-white me-2 lh-1 ls-n2">69</span>
-													<!--end::Amount-->
-													<!--begin::Subtitle-->
-													<span class="text-white opacity-75 pt-1 fw-semibold fs-6">Active
-														Projects</span>
-													<!--end::Subtitle-->
-												</div>
-												<!--end::Title-->
-											</div>
-											<!--end::Header-->
-											<!--begin::Card body-->
-											<div class="card-body d-flex align-items-end pt-0">
-												<!--begin::Progress-->
-												<div class="d-flex align-items-center flex-column mt-3 w-100">
-													<div
-														class="d-flex justify-content-between fw-bold fs-6 text-white opacity-75 w-100 mt-auto mb-2">
-														<span>43 Pending</span>
-														<span>72%</span>
-													</div>
-													<div class="h-8px mx-3 w-100 bg-white bg-opacity-50 rounded">
-														<div class="bg-white rounded h-8px" role="progressbar"
-															style="width: 72%;" aria-valuenow="50" aria-valuemin="0"
-															aria-valuemax="100"></div>
-													</div>
-												</div>
-												<!--end::Progress-->
-											</div>
-											<!--end::Card body-->
-										</div>
-										<!--end::Card widget 20-->
+						<!-- CONTENT -->
+                        <div class="card card-custom gutter-b">
+                            <div class="card-body">
+                                <div id="content-container">
 
-										<!--begin::Card widget 20-->
-										<div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-end h-md-50 mb-5 mb-xl-10"
-											style="background-color: #ca9708;background-image:url('assets/media/patterns/vector-1.png')">
-											<!--begin::Header-->
-											<div class="card-header pt-5">
-												<!--begin::Title-->
-												<div class="card-title d-flex flex-column">
-													<!--begin::Amount-->
-													<span class="fs-2hx fw-bold text-white me-2 lh-1 ls-n2">69</span>
-													<!--end::Amount-->
-													<!--begin::Subtitle-->
-													<span class="text-white opacity-75 pt-1 fw-semibold fs-6">Active
-														Projects</span>
-													<!--end::Subtitle-->
-												</div>
-												<!--end::Title-->
-											</div>
-											<!--end::Header-->
-											<!--begin::Card body-->
-											<div class="card-body d-flex align-items-end pt-0">
-												<!--begin::Progress-->
-												<div class="d-flex align-items-center flex-column mt-3 w-100">
-													<div
-														class="d-flex justify-content-between fw-bold fs-6 text-white opacity-75 w-100 mt-auto mb-2">
-														<span>43 Pending</span>
-														<span>72%</span>
-													</div>
-													<div class="h-8px mx-3 w-100 bg-white bg-opacity-50 rounded">
-														<div class="bg-white rounded h-8px" role="progressbar"
-															style="width: 72%;" aria-valuenow="50" aria-valuemin="0"
-															aria-valuemax="100"></div>
-													</div>
-												</div>
-												<!--end::Progress-->
-											</div>
-											<!--end::Card body-->
-										</div>
-										<!--end::Card widget 20-->
-									</div>
-									<!--end::Col-->
-									<!--begin::Col-->
-									<div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-md-5 mb-xl-10">
-										<!--begin::Card widget 20-->
-										<div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-end h-md-50 mb-5 mb-xl-10"
-											style="background-color: #46C2CF;background-image:url('assets/media/patterns/vector-1.png')">
-											<!--begin::Header-->
-											<div class="card-header pt-5">
-												<!--begin::Title-->
-												<div class="card-title d-flex flex-column">
-													<!--begin::Amount-->
-													<span class="fs-2hx fw-bold text-white me-2 lh-1 ls-n2">69</span>
-													<!--end::Amount-->
-													<!--begin::Subtitle-->
-													<span class="text-white opacity-75 pt-1 fw-semibold fs-6">Active
-														Projects</span>
-													<!--end::Subtitle-->
-												</div>
-												<!--end::Title-->
-											</div>
-											<!--end::Header-->
-											<!--begin::Card body-->
-											<div class="card-body d-flex align-items-end pt-0">
-												<!--begin::Progress-->
-												<div class="d-flex align-items-center flex-column mt-3 w-100">
-													<div
-														class="d-flex justify-content-between fw-bold fs-6 text-white opacity-75 w-100 mt-auto mb-2">
-														<span>43 Pending</span>
-														<span>72%</span>
-													</div>
-													<div class="h-8px mx-3 w-100 bg-white bg-opacity-50 rounded">
-														<div class="bg-white rounded h-8px" role="progressbar"
-															style="width: 72%;" aria-valuenow="50" aria-valuemin="0"
-															aria-valuemax="100"></div>
-													</div>
-												</div>
-												<!--end::Progress-->
-											</div>
-											<!--end::Card body-->
-										</div>
-										<!--end::Card widget 20-->
-										<!--begin::List widget 20-->
-										<div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-end h-md-50 mb-5 mb-xl-10"
-											style="background-color: #419cf1;background-image:url('assets/media/patterns/vector-1.png')">
-											<!--begin::Header-->
-											<div class="card-header pt-5">
-												<!--begin::Title-->
-												<div class="card-title d-flex flex-column">
-													<!--begin::Amount-->
-													<span class="fs-2hx fw-bold text-white me-2 lh-1 ls-n2">69</span>
-													<!--end::Amount-->
-													<!--begin::Subtitle-->
-													<span class="text-white opacity-75 pt-1 fw-semibold fs-6">Active
-														Projects</span>
-													<!--end::Subtitle-->
-												</div>
-												<!--end::Title-->
-											</div>
-											<!--end::Header-->
-											<!--begin::Card body-->
-											<div class="card-body d-flex align-items-end pt-0">
-												<!--begin::Progress-->
-												<div class="d-flex align-items-center flex-column mt-3 w-100">
-													<div
-														class="d-flex justify-content-between fw-bold fs-6 text-white opacity-75 w-100 mt-auto mb-2">
-														<span>43 Pending</span>
-														<span>72%</span>
-													</div>
-													<div class="h-8px mx-3 w-100 bg-white bg-opacity-50 rounded">
-														<div class="bg-white rounded h-8px" role="progressbar"
-															style="width: 72%;" aria-valuenow="50" aria-valuemin="0"
-															aria-valuemax="100"></div>
-													</div>
-												</div>
-												<!--end::Progress-->
-											</div>
-											<!--end::Card body-->
-										</div>
-										<!--end::LIst widget 20-->
-									</div>
-									<!--end::Col-->
-									<!--begin::Col-->
-									<div class="col-xxl-6">
-										<!--begin::Engage widget 10-->
-										<div class="card card-flush h-md-100">
-											<!--begin::Body-->
-											<div class="card-body d-flex flex-column justify-content-between mt-9 bgi-no-repeat bgi-size-cover bgi-position-x-center pb-0"
-												style="background-position: 100% 50%; background-image:url('assets/media/stock/900x600/42.png')">
-												<!--begin::Wrapper-->
-												<div class="mb-10">
-													<!--begin::Title-->
-													<div class="fs-2hx fw-bold text-gray-800 text-center mb-13">
-														<span class="me-2">SHIELD Your Sight and Faith with
-															<br />
-															<span class="position-relative d-inline-block text-danger">
-																<a href="https://safegaze.com/"
-																	class="text-danger opacity-75-hover">SafeGaze</a>
-																<!--begin::Separator-->
-																<span
-																	class="position-absolute opacity-15 bottom-0 start-0 border-4 border-danger border-bottom w-100"></span>
-																<!--end::Separator-->
-															</span>
-														</span>
-													</div>
-													<!--end::Title-->
-													<!--begin::Action-->
-													<div class="text-center">
-														<a href='https://safegaze.com/'
-															class="btn btn-sm btn-dark fw-bold">Visit Now</a>
-													</div>
-													<!--begin::Action-->
-												</div>
-												<!--begin::Wrapper-->
-												<!--begin::Illustration-->
-												<img class="mx-auto h-150px h-lg-200px theme-light-show"
-													src="assets/media/illustrations/misc/upgrade.svg" alt="" />
-												<img class="mx-auto h-150px h-lg-200px theme-dark-show"
-													src="assets/media/illustrations/misc/upgrade-dark.svg" alt="" />
-												<!--end::Illustration-->
-											</div>
-											<!--end::Body-->
-										</div>
-										<!--end::Engage widget 10-->
-									</div>
-									<!--end::Col-->
-								</div>
-								<!--end::Row-->
-							</div>
-							<!--end::Content container-->
-						</div>
+                                    <div class="card card-custom gutter-b">
+                                        <div class="card-header">
+                                            <div class="card-title">
+                                                <h3 class="card-label">
+                                                    Image
+                                                </h3>
+                                            </div>
+                                        </div>
+                                        <div class="card-body" id="image-contaner">
+                                            <div id="imageContainer">
+                                                <img id="image" alt="Image" />
+                                                <canvas id="img-canvas"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card card-custom gutter-b" id="selected-faces-container-card">
+                                        <div class="card-header">
+                                            <div class="card-title">
+                                                <h3 class="card-label">
+                                                    Selected Faces
+                                                    <small>Tap to deselect</small>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                        <div class="card-body" id="selected-faces-container">
+                                            
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- CONTENT -->
 						<!--end::Content-->
 					</div>
 					<!--end::Content wrapper-->
@@ -847,6 +675,8 @@
 	<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 	<!--end::Custom Javascript-->
 	<!--end::Javascript-->
+
+    <script type="module" src="face.js"></script>
 </body>
 <!--end::Body-->
 
