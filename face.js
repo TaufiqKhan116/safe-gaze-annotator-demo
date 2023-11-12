@@ -47,15 +47,23 @@ function appenedCroppedImage(container, image, image_width, image_height, id) {
     const cropped_context = cropped_canvas.getContext('2d');
     const thumbnail_container = document.createElement('div')
 
-    cropped_canvas.width = image_width;
-    cropped_canvas.height = image_height;
+    cropped_canvas.width = 100;
+    cropped_canvas.height = 100;
     thumbnail_container.id = id
-
+    thumbnail_container.style.border = 'solid'
+    thumbnail_container.style.borderColor = 'black'
+    thumbnail_container.style.width = 'fit-content'
+    thumbnail_container.style.padding = '2px'
+    thumbnail_container.style.display = 'inline-block'
+    thumbnail_container.style.margin = '2px'
+    
     image.onload = () => {
-        cropped_context.drawImage(image, 0, 0, image_width, image_height, 0, 0, image_width, image_height);
+        cropped_context.drawImage(image, 0, 0, image_width, image_height, 0, 0, cropped_canvas.width, cropped_canvas.height);
         thumbnail_container.appendChild(cropped_canvas)
         container.appendChild(thumbnail_container)
     }
+
+    return thumbnail_container
 }
 
 img.onload = () => {
@@ -88,7 +96,7 @@ img.onload = () => {
         box_list.push(boundingBox)
         // console.log(box_list)
 
-        appenedCroppedImage(
+        const appended_image_container = appenedCroppedImage(
             selected_faces_container,
             cropImage(
                 img,
@@ -101,6 +109,19 @@ img.onload = () => {
             boundingBox.height,
             boundingBox.id
         )
+
+        appended_image_container.addEventListener('click', (event) => {
+            box_list = box_list.filter((box) => {
+                return box.id != appended_image_container.id
+            })
+
+            appended_image_container.remove()
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            box_list.forEach((box) => {
+                drawRectangle(ctx, box.x, box.y, box.width, box.height)
+            })
+        })
 
         box_list.forEach((box) => {
             drawRectangle(ctx, box.x, box.y, box.width, box.height)
@@ -115,78 +136,4 @@ img.onload = () => {
             drawRectangle(ctx, startX, startY, width, height);
         }
     });
-
-    // next_btn.onclick = (event) => {
-    //     next_btn.disabled = true;
-    //     img.style.display = "none";
-    //     canvas.style.display = "none"
-
-    //     for (let i = 0; box_list.length > 0 && i < box_list.length; i++) {
-
-    //         // Create a canvas element
-            
-    //         const crop_canv = document.createElement('canvas');
-    //         const crop_ctx = crop_canv.getContext('2d');
-    //         crop_canv.className = 'canvas'; // Add CSS class for styling
-    //         crop_canv.id = box_list[i].id
-
-    //         crop_canv.onmousedown = () => {
-    //             if (female_face_id_list.includes(crop_canv.id)) {
-    //                 crop_ctx.clearRect(0, 0, 10, 10)
-
-    //                 female_face_id_list = female_face_id_list.filter((item) => {
-    //                     return item != crop_canv.id
-    //                 })
-    //             } else {
-    //                 female_face_id_list.push(crop_canv.id)
-    //                 crop_ctx.fillStyle = "blue"
-    //                 crop_ctx.fillRect(0, 0, 10, 10)
-    //             }
-    //         }
-
-    //         const x = box_list[i].x;
-    //         const y = box_list[i].y;
-    //         const width = box_list[i].width;
-    //         const height = box_list[i].height;
-
-    //         let cropped_image = cropImage(img, x, y, width, height)
-
-            
-    //         cropped_image.onload = () => {
-    //             // crop_ctx.drawImage(cropped_image, 0, 0)
-
-    //             box_list[i].cropped_image = cropped_image
-
-    //             crop_ctx.drawImage(
-    //                 cropped_image,
-    //                 0, 0, cropped_image.width, cropped_image.height,
-    //                 0, 0, crop_canv.width, crop_canv.height
-    //             )
-    //             crop_ctx.clearRect(0, 0, 10, 10)
-    //         }
-
-    //         console.log(box_list[i]);
-    //         image_div.appendChild(crop_canv);
-    //     }
-
-    //     const submit_btn = document.createElement("button");
-    //     submit_btn.innerText = "Submit"
-    //     image_div.appendChild(submit_btn)
-    //     submit_btn.onclick = (event) => {
-    //         submit_btn.disabled = "true"
-
-    //         female_face_id_list.forEach((id) => {
-    //             box_list.forEach((box) => {
-    //                 if (box.id == id) {
-    //                     box.gender = "female"
-    //                 } else {
-    //                     box.gender = "male"
-    //                 }
-    //             })
-    //         })
-
-    //         alert(female_face_id_list);
-    //         console.log(box_list)
-    //     }
-    // }
 }

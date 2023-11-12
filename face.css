@@ -11,10 +11,7 @@
     margin: 5px;
 }
 
-#content-container{
-    display: flex;
-}
-
 #selected-faces-container-card {
     margin-left: 20px;
+    position: relative;
 }
