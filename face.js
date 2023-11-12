@@ -4,7 +4,9 @@ const img = document.getElementById("image")
 const canvas = document.getElementById('img-canvas');
 const ctx = canvas.getContext('2d');
 
-const next_btn = document.getElementById('next');
+const selected_faces_container = document.getElementById("selected-faces-container")
+
+// const next_btn = document.getElementById('next');
 
 let box_list = []
 let female_face_id_list = []
@@ -40,6 +42,22 @@ function drawRectangle(ctx, x, y, w, h) {
     ctx.strokeRect(x, y, w, h);
 }
 
+function appenedCroppedImage(container, image, image_width, image_height, id) {
+    const cropped_canvas = document.createElement('canvas');
+    const cropped_context = cropped_canvas.getContext('2d');
+    const thumbnail_container = document.createElement('div')
+
+    cropped_canvas.width = image_width;
+    cropped_canvas.height = image_height;
+    thumbnail_container.id = id
+
+    image.onload = () => {
+        cropped_context.drawImage(image, 0, 0, image_width, image_height, 0, 0, image_width, image_height);
+        thumbnail_container.appendChild(cropped_canvas)
+        container.appendChild(thumbnail_container)
+    }
+}
+
 img.onload = () => {
     canvas.width = img.width;
     canvas.height = img.height;
@@ -65,10 +83,24 @@ img.onload = () => {
             x: startX,
             y: startY,
             width: width,
-            height: height
+            height: height,
         };
         box_list.push(boundingBox)
         // console.log(box_list)
+
+        appenedCroppedImage(
+            selected_faces_container,
+            cropImage(
+                img,
+                boundingBox.x,
+                boundingBox.y,
+                boundingBox.width,
+                boundingBox.height
+            ),
+            boundingBox.width,
+            boundingBox.height,
+            boundingBox.id
+        )
 
         box_list.forEach((box) => {
             drawRectangle(ctx, box.x, box.y, box.width, box.height)
