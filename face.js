@@ -123,6 +123,21 @@ img.onload = () => {
             })
         })
 
+        appended_image_container.addEventListener('mouseover', (event) => {
+            const cross_element = document.createElement('i')
+            cross_element.className = 'fa-solid fa-xmark'
+            cross_element.ariaHidden = true
+            cross_element.style.position = 'relative'
+
+            appended_image_container.appendChild(cross_element)
+            appended_image_container.style.borderColor = 'red'
+        })
+
+        appended_image_container.addEventListener('mouseout', (event) => {
+            appended_image_container.querySelector('i').remove()
+            appended_image_container.style.borderColor = 'black'
+        })
+
         box_list.forEach((box) => {
             drawRectangle(ctx, box.x, box.y, box.width, box.height)
         })
