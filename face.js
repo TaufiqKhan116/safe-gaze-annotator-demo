@@ -5,6 +5,9 @@ const canvas = document.getElementById('img-canvas');
 const ctx = canvas.getContext('2d');
 
 const selected_faces_container = document.getElementById("selected-faces-container")
+const face_count = document.getElementById('face-count')
+
+const submit_faces = document.getElementById('submit-faces-btn')
 
 // const next_btn = document.getElementById('next');
 
@@ -110,12 +113,15 @@ img.onload = () => {
             boundingBox.id
         )
 
+        face_count.innerText = box_list.length
+
         appended_image_container.addEventListener('click', (event) => {
             box_list = box_list.filter((box) => {
                 return box.id != appended_image_container.id
             })
 
             appended_image_container.remove()
+            face_count.innerText = box_list.length
 
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             box_list.forEach((box) => {
@@ -124,18 +130,13 @@ img.onload = () => {
         })
 
         appended_image_container.addEventListener('mouseover', (event) => {
-            const cross_element = document.createElement('i')
-            cross_element.className = 'fa-solid fa-xmark'
-            cross_element.ariaHidden = true
-            cross_element.style.position = 'relative'
-
-            appended_image_container.appendChild(cross_element)
             appended_image_container.style.borderColor = 'red'
+            appended_image_container.style.borderStyle = 'outset'
         })
 
         appended_image_container.addEventListener('mouseout', (event) => {
-            appended_image_container.querySelector('i').remove()
             appended_image_container.style.borderColor = 'black'
+            appended_image_container.style.borderStyle = 'solid'
         })
 
         box_list.forEach((box) => {
@@ -151,4 +152,8 @@ img.onload = () => {
             drawRectangle(ctx, startX, startY, width, height);
         }
     });
+
+    submit_faces.onclick = (event) => {
+        alert(box_list)
+    }
 }
