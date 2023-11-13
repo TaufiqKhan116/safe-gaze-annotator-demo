@@ -93,7 +93,8 @@ img.onload = () => {
             width: width,
             height: height,
         };
-        box_list.push(boundingBox)
+        if (boundingBox.width > 10 && boundingBox.height > 10)
+            box_list.push(boundingBox)
 
         const appended_image_container = appenedCroppedImage(
             selected_faces_container,
