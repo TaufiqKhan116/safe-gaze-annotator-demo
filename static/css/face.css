@@ -21,10 +21,25 @@
     display: inline-block;
     position: absolute;
     width: fit-content;
-    max-width: 445px;
+    max-width: 750px;
     min-width: 445px;
     margin-left: 20px;
     margin-right: 50px;
+}
+.submit-btn{
+    margin: 5px;
+
+}
+
+.card-header {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body {
+    max-height: 600px;
+    overflow: scroll;
+
 }
 
 .thumbnail-container {
