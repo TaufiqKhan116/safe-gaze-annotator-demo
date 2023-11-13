@@ -1,0 +1,18 @@
+#face-matrix-conainer-card {
+    display: inline-block;
+    position: relative;
+    width: fit-content;
+    margin-left: 25%;
+}
+
+#submit-gender-btn {
+    margin: 10px;
+}
+
+.sub-container {
+    width: fit-content;
+    border: groove;
+    border-color: black;
+    border-width: 5px;
+    margin: 2px;
+}

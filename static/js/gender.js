@@ -120,56 +120,52 @@ function parseJSON(json_str) {
 }
 
 function load_faces(img, box_list) {
-    for(let i = 0; i < box_list.length && i < 9; i++) {
-        const img_container = document.getElementById('face-' + (i+1))
-        const sub_container = document.createElement('div')
-        const canvas = document.createElement('canvas')
-        const context = canvas.getContext('2d')
+  for(let i = 0; i < box_list.length && i < 9; i++) {
+    const img_container = document.getElementById('face-' + (i+1))
+    const sub_container = document.createElement('div')
+    const canvas = document.createElement('canvas')
+    const context = canvas.getContext('2d')
 
-        canvas.width = 100
-        canvas.height = 100
-        sub_container.id = box_list[i].id
-        sub_container.style.borderStyle = 'groove'
-        sub_container.style.borderColor = 'black'
-        sub_container.style.margin = '2px'
-        sub_container.style.width = 'fit-content'
-        sub_container.style.borderWidth = '5px'
+    canvas.width = 100
+    canvas.height = 100
+    sub_container.id = box_list[i].id
+    sub_container.className = 'sub-container'
 
-        sub_container.onclick = (event) => {
-            sub_container.style.borderStyle = 'solid'
-            sub_container.style.borderColor = 'red'
+    sub_container.onclick = (event) => {
+        sub_container.style.borderStyle = 'solid'
+        sub_container.style.borderColor = 'red'
 
-            box_list.forEach(box => {
-                if (box.id == sub_container.id) {
-                    if(box.gender == 'undefined') {
-                        box.gender = 1
+        box_list.forEach(box => {
+            if (box.id == sub_container.id) {
+                if(box.gender == 'undefined') {
+                    box.gender = 1
+                } else {
+                    if (box.gender == 1) {
+                        box.gender = 0 // Male
+                        sub_container.style.borderStyle = 'groove'
+                        sub_container.style.borderColor = 'black'
                     } else {
-                        if (box.gender == 1) {
-                            box.gender = 0 // Male
-                            sub_container.style.borderStyle = 'groove'
-                            sub_container.style.borderColor = 'black'
-                        } else {
-                            box.gender = 1 // Female
-                            sub_container.style.borderStyle = 'solid'
-                            sub_container.style.borderColor = 'red'
-                        }
+                        box.gender = 1 // Female
+                        sub_container.style.borderStyle = 'solid'
+                        sub_container.style.borderColor = 'red'
                     }
                 }
-            });
-        }
-
-        const cropped_image = cropImage(img, box_list[i].x, box_list[i].y, box_list[i].width, box_list[i].height)
-
-        cropped_image.onload = () => {
-            context.drawImage(
-                cropped_image,
-                0, 0, cropped_image.width, cropped_image.height,
-                0, 0, canvas.width, canvas.height
-            )
-            sub_container.appendChild(canvas)
-            img_container.appendChild(sub_container)
-        }
+            }
+        });
     }
+
+    const cropped_image = cropImage(img, box_list[i].x, box_list[i].y, box_list[i].width, box_list[i].height)
+
+    cropped_image.onload = () => {
+        context.drawImage(
+            cropped_image,
+            0, 0, cropped_image.width, cropped_image.height,
+            0, 0, canvas.width, canvas.height
+        )
+        sub_container.appendChild(canvas)
+        img_container.appendChild(sub_container)
+    }
+  }
 }
 
 img.onload = () => {

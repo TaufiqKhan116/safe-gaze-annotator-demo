@@ -9,23 +9,11 @@ const face_count = document.getElementById('face-count')
 
 const submit_faces = document.getElementById('submit-faces-btn')
 
-// const next_btn = document.getElementById('next');
-
 let box_list = []
-let female_face_id_list = []
 
 img.src = "multiple.webp"
 
 function logJsonArray(objects) {
-    // let string = ''
-    // objects.forEach((obj, index) => {
-    //   console.log(`Object ${index + 1}:`);
-    //   string += JSON.stringify(obj, null, 2) + '\n'
-    //   console.log(JSON.stringify(obj, null, 2)); // The third argument (2) is for indentation
-    //   console.log('\n');
-    // });
-
-    // console.log(string)
     const jsonArrayString = JSON.stringify(objects, null, 2);
     console.log(jsonArrayString);
 }
@@ -63,16 +51,11 @@ function appenedCroppedImage(container, image, image_width, image_height, id) {
     const cropped_canvas = document.createElement('canvas');
     const cropped_context = cropped_canvas.getContext('2d');
     const thumbnail_container = document.createElement('div')
+    thumbnail_container.className = 'thumbnail-container'
 
     cropped_canvas.width = 100;
     cropped_canvas.height = 100;
     thumbnail_container.id = id
-    thumbnail_container.style.border = 'solid'
-    thumbnail_container.style.borderColor = 'black'
-    thumbnail_container.style.width = 'fit-content'
-    thumbnail_container.style.padding = '2px'
-    thumbnail_container.style.display = 'inline-block'
-    thumbnail_container.style.margin = '2px'
     
     image.onload = () => {
         cropped_context.drawImage(image, 0, 0, image_width, image_height, 0, 0, cropped_canvas.width, cropped_canvas.height);
@@ -111,7 +94,6 @@ img.onload = () => {
             height: height,
         };
         box_list.push(boundingBox)
-        // console.log(box_list)
 
         const appended_image_container = appenedCroppedImage(
             selected_faces_container,

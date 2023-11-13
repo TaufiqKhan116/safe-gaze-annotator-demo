@@ -29,7 +29,7 @@
 	<!--end::Global Stylesheets Bundle-->
 	<script>// Frame-busting to prevent site from being loaded within a frame without permission (click-jacking) if (window.top != window.self) { window.top.location.replace(window.self.location.href); }</script>
 
-    <link rel="stylesheet" href="face.css">
+    <link rel="stylesheet" href="/static/css/face.css">
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -568,7 +568,7 @@
                             <div>
                                 <div id="content-container">
 
-                                    <div class="card card-custom gutter-b" style="display: inline-block; position: relative; margin-left: 10px;">
+                                    <div id="image-container-card" class="card card-custom gutter-b">
                                         <div class="card-header">
                                             <div class="card-title">
                                                 <h3 class="card-label">
@@ -584,11 +584,11 @@
                                         </div>
                                     </div>
 
-									<div style="display: inline-block; position: absolute; margin: 5px;">
+									<div id="double-right-arrow" style="display: inline-block; position: absolute; margin: 5px;">
 										<i class="fas fa-angle-double-right fa-lg"></i>
 									</div>
 
-                                    <div class="card card-custom gutter-b" style="display: inline-block; position: absolute;width: fit-content;margin-right: 50px;max-width: 445px; min-width: 445px;" id="selected-faces-container-card">
+                                    <div id="selected-faces-container-card" class="card card-custom gutter-b">
                                         <div class="card-header">
                                             <div class="card-title">
                                                 <h3 class="card-label">
@@ -601,7 +601,7 @@
                                         </div>
                                         <div class="card-body">
                                             <div id="selected-faces-container">
-
+												
 											</div>
                                         </div>
                                     </div>
@@ -684,7 +684,7 @@
 	<!--end::Custom Javascript-->
 	<!--end::Javascript-->
 
-    <script type="module" src="face.js"></script>
+    <script type="module" src="/static/js/face.js"></script>
 </body>
 <!--end::Body-->
 

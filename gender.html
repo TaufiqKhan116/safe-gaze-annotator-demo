@@ -29,7 +29,7 @@
 	<!--end::Global Stylesheets Bundle-->
 	<script>// Frame-busting to prevent site from being loaded within a frame without permission (click-jacking) if (window.top != window.self) { window.top.location.replace(window.self.location.href); }</script>
 
-    <link rel="stylesheet" href="face.css">
+    <link rel="stylesheet" href="static/css/gender.css">
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -565,7 +565,7 @@
 						<!--begin::Content-->
 						<!-- CONTENT -->
 
-                        <div class="card card-custom gutter-b" style="display: inline-block; position: relative; margin-left: 10px; width: fit-content; margin-left: 25%;">
+                        <div id="face-matrix-conainer-card" class="card card-custom gutter-b">
                             <div class="card-header">
                                 <div class="card-title">
                                     <h3 class="card-label">
@@ -617,7 +617,7 @@
                             </div>
 
                             <div class="card-footer d-flex justify-content-between">
-                                <button id="submit-gender-btn" type="button" class="btn btn-success" style="margin: 10px;">Submit</button>
+                                <button id="submit-gender-btn" type="button" class="btn btn-success">Submit</button>
                             </div>
                         </div>
 
@@ -696,7 +696,7 @@
 	<!--end::Custom Javascript-->
 	<!--end::Javascript-->
 
-    <script type="module" src="gender.js"></script>
+    <script type="module" src="/static/js/gender.js"></script>
 </body>
 <!--end::Body-->
 
