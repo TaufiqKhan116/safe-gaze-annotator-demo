@@ -128,15 +128,12 @@ img.onload = () => {
 
             appended_image_container.remove()
             face_count.innerText = box_list.length
-
-            // console.log("Before");
             
             if (box_list.length !== 0) {
                 tap_select_message.style.display = "block";
             } else {
                 tap_select_message.style.display = "none";
             }
-            // console.log("after");
 
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 box_list.forEach((box) => {
