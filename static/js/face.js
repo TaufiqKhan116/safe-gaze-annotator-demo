@@ -1,5 +1,6 @@
 const image_div = document.getElementById("imageContainer")
 const img = document.getElementById("image")
+const tap_select_message = document.getElementById("tap-select-message");
 
 const canvas = document.getElementById('img-canvas');
 const ctx = canvas.getContext('2d');
@@ -63,6 +64,14 @@ function appenedCroppedImage(container, image, image_width, image_height, id) {
         container.appendChild(thumbnail_container)
     }
 
+    // console.log("Before");
+    if (box_list.length !== 0) {
+        tap_select_message.style.display = "block";
+    } else {
+        tap_select_message.style.display = "none";
+    }
+    // console.log("after");
+
     return thumbnail_container
 }
 
@@ -117,8 +126,17 @@ img.onload = () => {
                     return box.id != appended_image_container.id
                 })
 
-                appended_image_container.remove()
-                face_count.innerText = box_list.length
+            appended_image_container.remove()
+            face_count.innerText = box_list.length
+
+            // console.log("Before");
+            
+            if (box_list.length !== 0) {
+                tap_select_message.style.display = "block";
+            } else {
+                tap_select_message.style.display = "none";
+            }
+            // console.log("after");
 
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 box_list.forEach((box) => {
@@ -156,3 +174,4 @@ img.onload = () => {
         logJsonArray(box_list)
     }
 }
+
