@@ -97,34 +97,34 @@ img.onload = () => {
         drawRectangle(ctx, startX, startY, width, height);
         const boundingBox = {
             id: uuidv4(),
-            x: startX,
-            y: startY,
-            width: width,
-            height: height,
+            x: (width > 0) ? startX : (startX + width),
+            y: (height > 0) ? startY : (startY + height),
+            width: Math.abs(width),
+            height: Math.abs(height),
         };
-        if (boundingBox.width > 10 && boundingBox.height > 10)
+        if (Math.abs(boundingBox.width) > 10 && Math.abs(boundingBox.height) > 10) {
             box_list.push(boundingBox)
 
-        const appended_image_container = appenedCroppedImage(
-            selected_faces_container,
-            cropImage(
-                img,
-                boundingBox.x,
-                boundingBox.y,
+            const appended_image_container = appenedCroppedImage(
+                selected_faces_container,
+                cropImage(
+                    img,
+                    boundingBox.x,
+                    boundingBox.y,
+                    boundingBox.width,
+                    boundingBox.height
+                ),
                 boundingBox.width,
-                boundingBox.height
-            ),
-            boundingBox.width,
-            boundingBox.height,
-            boundingBox.id
-        )
+                boundingBox.height,
+                boundingBox.id
+            )
 
-        face_count.innerText = box_list.length
+            face_count.innerText = box_list.length
 
-        appended_image_container.addEventListener('click', (event) => {
-            box_list = box_list.filter((box) => {
-                return box.id != appended_image_container.id
-            })
+            appended_image_container.addEventListener('click', (event) => {
+                box_list = box_list.filter((box) => {
+                    return box.id != appended_image_container.id
+                })
 
             appended_image_container.remove()
             face_count.innerText = box_list.length
@@ -138,21 +138,22 @@ img.onload = () => {
             }
             // console.log("after");
 
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            box_list.forEach((box) => {
-                drawRectangle(ctx, box.x, box.y, box.width, box.height)
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                box_list.forEach((box) => {
+                    drawRectangle(ctx, box.x, box.y, box.width, box.height)
+                })
             })
-        })
 
-        appended_image_container.addEventListener('mouseover', (event) => {
-            appended_image_container.style.borderColor = 'red'
-            appended_image_container.style.borderStyle = 'outset'
-        })
+            appended_image_container.addEventListener('mouseover', (event) => {
+                appended_image_container.style.borderColor = 'red'
+                appended_image_container.style.borderStyle = 'outset'
+            })
 
-        appended_image_container.addEventListener('mouseout', (event) => {
-            appended_image_container.style.borderColor = 'black'
-            appended_image_container.style.borderStyle = 'solid'
-        })
+            appended_image_container.addEventListener('mouseout', (event) => {
+                appended_image_container.style.borderColor = 'black'
+                appended_image_container.style.borderStyle = 'solid'
+            })
+        }
 
         box_list.forEach((box) => {
             drawRectangle(ctx, box.x, box.y, box.width, box.height)
